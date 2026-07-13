@@ -93,6 +93,17 @@
             font-family: monospace;
             word-break: break-all;
         }
+        /* Withdrawal Amount Display Fix */
+        .withdraw-balance {
+            font-size: 14px;
+            font-weight: bold;
+            color: #4ade80;
+        }
+        .payment-amount-display {
+            font-size: 16px;
+            font-weight: bold;
+            color: #ffffff;
+        }
     </style>
 </head>
 <body class="text-white relative min-h-screen flex flex-col items-center justify-start">
@@ -125,7 +136,7 @@
             <!-- ========================================================= -->
             <div id="userPanelContainer">
 
-                <!-- REGISTRATION PAGE (Referral Auto-Fill Support) -->
+                <!-- REGISTRATION PAGE -->
                 <section id="registrationPage" class="app-page w-full space-y-6">
                     <div class="text-center space-y-2 py-6">
                         <div class="w-20 h-20 rounded-full bg-gradient-to-tr from-amber-500 to-yellow-300 flex items-center justify-center text-slate-950 font-extrabold text-3xl mx-auto gold-glow border-2 border-amber-300">CX</div>
@@ -287,12 +298,16 @@
                     </div>
                 </section>
 
-                <!-- PURCHASE SECTION -->
+                <!-- ========================================================= -->
+                <!-- PURCHASE SECTION - FIXED (Hindi Text)                     -->
+                <!-- ========================================================= -->
                 <section id="purchasePage" class="app-page w-full hidden space-y-4">
                     <div class="bg-slate-900/90 backdrop-blur-md p-4 rounded-xl border border-slate-800/80">
                         <h3 class="text-sm font-bold text-amber-400"><i class="fa-solid fa-cart-shopping mr-1.5"></i> कॉइन परचेज करें</h3>
                         <p class="text-[11px] text-slate-400">USDT (BEP20) के माध्यम से कॉइन सुरक्षित परचेज करें।</p>
                     </div>
+                    
+                    <!-- Custom Amount -->
                     <div class="bg-slate-900/95 backdrop-blur-md p-4 rounded-xl border border-slate-800 space-y-3">
                         <h4 class="text-xs font-bold text-slate-300">कस्टम अमाउंट दर्ज करें</h4>
                         <div class="space-y-2">
@@ -308,25 +323,35 @@
                             </button>
                         </div>
                     </div>
+
+                    <!-- Packages Grid -->
                     <div class="grid grid-cols-2 gap-3 max-h-[160px] overflow-y-auto pr-1" id="purchaseGrid"></div>
+
+                    <!-- ========================================================= -->
+                    <!-- PAYMENT GATEWAY CARD - FIXED (सिर्फ Hindi Text)          -->
+                    <!-- ========================================================= -->
                     <div id="paymentGatewayCard" class="bg-slate-900/95 backdrop-blur-md p-5 rounded-xl border border-amber-500/30 space-y-4 hidden">
                         <div class="flex items-center justify-between border-b border-slate-800 pb-2">
                             <h4 class="text-xs font-bold text-amber-400"><i class="fa-solid fa-qrcode mr-1"></i> भुगतान विवरण</h4>
                             <button onclick="hidePaymentCard()" class="text-[10px] text-slate-400 bg-slate-800 px-2 py-0.5 rounded">बंद करें</button>
                         </div>
+                        
+                        <!-- ✅ FIXED: Proper Hindi Text -->
                         <div class="bg-red-500/10 border border-red-500/30 rounded-lg p-2.5 text-center">
                             <span class="text-xs font-bold text-red-400 block"><i class="fa-solid fa-circle-exclamation mr-1"></i> USDT (BEP20) में ही Payment करें।</span>
                         </div>
+                        
                         <div class="flex flex-col items-center justify-center text-center space-y-2">
-                            <span class="text-[11px] text-slate-400">स्कैन करके पेमेंट करें: <strong id="paymentUSDVal" class="text-white">$5.00</strong></span>
+                            <span class="text-[11px] text-slate-400">स्कैन करके पेमेंट करें: <strong id="paymentUSDVal" class="payment-amount-display">$5.00 USDT (450 CX Coins)</strong></span>
                             <div class="bg-white p-2 rounded-lg inline-block">
-                                <img src="https://i.postimg.cc/4dktMC4X/IMG-20260701-141135.jpg" alt="Payment QR" class="w-32 h-32 object-contain">
+                                <img src="https://i.postimg.cc/nL1FZdZH/IMG-20260714-000707.png" alt="Payment QR" class="w-32 h-32 object-contain">
                             </div>
                             <div class="w-full bg-slate-950 p-2.5 rounded-lg border border-slate-800 flex items-center justify-between text-[11px]">
                                 <span class="text-slate-400 truncate mr-2 select-all font-mono" id="cryptoAddressText">0x7be243182b7442D17a13e2C019f0d0174F196817</span>
-                                <button onclick="copyToClipboard('cryptoAddressText', 'USDT एड्रेस कॉपी हुआ')" class="text-amber-400 hover:text-white shrink-0"><i class="fa-solid fa-copy"></i></button>
+                                <button onclick="copyToClipboard('cryptoAddressText', '✅ USDT एड्रेस कॉपी हुआ')" class="text-amber-400 hover:text-white shrink-0"><i class="fa-solid fa-copy"></i></button>
                             </div>
                         </div>
+                        
                         <div class="space-y-2 pt-2 border-t border-slate-800">
                             <div>
                                 <label class="block text-[10px] text-slate-400 mb-1">पेमेंट स्क्रीनशॉट अपलोड करें</label>
@@ -378,7 +403,7 @@
                 </section>
 
                 <!-- ========================================================= -->
-                <!-- PROFILE PAGE WITH SESSION SUPPORT                          -->
+                <!-- PROFILE PAGE - FIXED (Withdrawal Balance Display)          -->
                 <!-- ========================================================= -->
                 <section id="profilePage" class="app-page w-full hidden space-y-4">
                     <div class="bg-slate-900/90 backdrop-blur-md p-4 rounded-xl border border-slate-800 flex items-center justify-between">
@@ -397,25 +422,27 @@
                         </div>
                     </div>
 
-                    <!-- Invite Friends Section -->
+                    <!-- Invite Friends -->
                     <div class="bg-slate-900/95 backdrop-blur-md p-4 rounded-xl border border-slate-800 space-y-3">
                         <h4 class="text-xs font-bold text-amber-400"><i class="fa-solid fa-share-nodes mr-1.5"></i> Invite Friends & Earn 2%</h4>
                         <p class="text-[10px] text-slate-400">जब आपके द्वारा आमंत्रित सदस्य स्टेक करेंगे, आपको 2% बोनस मिलेगा!</p>
                         <div class="w-full bg-slate-950 p-2.5 rounded-lg border border-slate-800 flex items-center justify-between text-[11px]">
-                            <span id="referralShareLink" class="text-slate-400 truncate mr-2 select-all font-mono">https://coinx-network.com/join?ref=</span>
-                            <button onclick="copyToClipboard('referralShareLink', 'रेफरल लिंक कॉपी हो गया!')" class="text-amber-400 hover:text-white shrink-0"><i class="fa-solid fa-copy"></i></button>
+                            <span id="referralShareLink" class="text-slate-400 truncate mr-2 select-all font-mono">https://coinxnetwork.online/?ref=</span>
+                            <button onclick="copyToClipboard('referralShareLink', '✅ रेफरल लिंक कॉपी हो गया!')" class="text-amber-400 hover:text-white shrink-0"><i class="fa-solid fa-copy"></i></button>
                         </div>
                         <button onclick="shareReferralLink()" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 rounded-lg text-xs transition-all btn-animate flex items-center justify-center gap-1.5">
                             <i class="fa-solid fa-share-nodes"></i> Share Referral Link
                         </button>
                     </div>
 
-                    <!-- Withdrawal Setup -->
+                    <!-- Withdrawal Setup - FIXED -->
                     <div class="bg-slate-900/95 backdrop-blur-md p-4 rounded-xl border border-slate-800 space-y-3">
                         <h4 class="text-xs font-bold text-amber-400 border-b border-slate-800 pb-1.5"><i class="fa-solid fa-money-bill-transfer mr-1"></i> विथड्रॉवल सेटअप</h4>
+                        
                         <div class="bg-red-500/10 border border-red-500/30 rounded-lg p-2 text-center">
                             <span class="text-[11px] font-bold text-red-400"><i class="fa-solid fa-circle-exclamation mr-1"></i> USDT (BEP20) में ही Withdrawal लें।</span>
                         </div>
+                        
                         <div>
                             <label class="block text-[10px] text-slate-400 mb-1">USDT (BEP20) QR कोड अपलोड करें</label>
                             <div class="flex items-center gap-3">
@@ -427,13 +454,16 @@
                                 <div id="userQrPreview" class="w-10 h-10 bg-slate-950 rounded border border-slate-800 hidden items-center justify-center overflow-hidden"></div>
                             </div>
                         </div>
+                        
                         <div>
                             <label class="block text-[10px] text-slate-400 mb-1">USDT (BEP20) Wallet Address</label>
                             <input type="text" id="userWithdrawAddress" placeholder="BEP20 एड्रेस पेस्ट करें..." class="w-full bg-slate-950 border border-slate-800 rounded-lg py-2 px-3 text-xs focus:outline-none focus:border-amber-400 text-white font-mono">
                         </div>
+                        
                         <div class="pt-2 border-t border-slate-800/80">
+                            <!-- ✅ FIXED: Proper Balance Display -->
                             <div class="flex justify-between items-center text-[10px] text-slate-400 mb-1">
-                                <span>अवेलेबल बैलेंस: <strong id="withdrawAvailable" class="text-green-400">0.00 CX</strong></span>
+                                <span>अवेलेबल बैलेंस: <strong id="withdrawAvailable" class="withdraw-balance">0.00 CX</strong></span>
                                 <span class="text-amber-500">(मिनिमम: 100 कॉइन)</span>
                             </div>
                             <div class="flex gap-2">
@@ -459,7 +489,7 @@
                     </div>
 
                     <!-- ========================================================= -->
-                    <!-- 🔥 SESSION SUPPORT SECTION (FIXED)                        -->
+                    <!-- SESSION SUPPORT SECTION - FIXED                           -->
                     <!-- ========================================================= -->
                     <div class="bg-slate-900/90 backdrop-blur-md p-4 rounded-xl border border-blue-500/30 space-y-3">
                         <div class="flex items-center gap-2 text-blue-400 text-xs font-bold">
@@ -1130,7 +1160,7 @@
     }
 
     // ============================================================
-    // REGISTRATION (Referral Auto-Fill Support)
+    // REGISTRATION
     // ============================================================
     async function handleRegistration(btn) {
         if (isAdminMode) return;
@@ -1396,7 +1426,7 @@
     }
 
     // ============================================================
-    // PURCHASE (FIXED - Deposit Request)
+    // PURCHASE - FIXED
     // ============================================================
     function calculateCustomCoins(usdValue) {
         if (isAdminMode) return;
@@ -1455,22 +1485,35 @@
         selectedPurchaseUsd = usd;
         selectedPurchaseCoins = coins;
 
-        document.getElementById('paymentUSDVal').innerText = `$${usd}.00 USDT (${coins} CX Coins)`;
+        // ✅ FIXED: Payment amount display
+        document.getElementById('paymentUSDVal').innerHTML = `$${usd}.00 USDT (${coins} CX Coins)`;
         document.getElementById('paymentGatewayCard').classList.remove('hidden');
         document.getElementById('paymentGatewayCard').scrollIntoView({ behavior: 'smooth' });
-        showToast(`भुगतान के लिए $${usd} का पैकेज चुना गया।`, 'info');
+        showToast(`✅ भुगतान के लिए $${usd} का पैकेज चुना गया।`, 'info');
     }
 
     function handlePurchaseScreenshot(event) {
         if (isAdminMode) return;
         const file = event.target.files[0];
         if (file) {
+            // ✅ FIXED: File validation
+            if (file.size > 5 * 1024 * 1024) {
+                showToast("❌ फ़ाइल 5MB से बड़ी है! कृपया छोटी इमेज अपलोड करें।", 'error');
+                event.target.value = '';
+                return;
+            }
+            if (!file.type.startsWith('image/')) {
+                showToast("❌ कृपया सिर्फ इमेज फ़ाइल अपलोड करें (JPG, PNG, WEBP)।", 'error');
+                event.target.value = '';
+                return;
+            }
+            
             uploadReceiptFile = file;
             const reader = new FileReader();
             reader.onload = function(e) {
                 document.getElementById('purchaseScreenshotName').innerText = "✅ इमेज सिलेक्टेड";
                 const preview = document.getElementById('purchaseScreenshotPreview');
-                preview.innerHTML = `<img src="${e.target.result}" class="w-full h-full object-cover">`;
+                preview.innerHTML = `<img src="${e.target.result}" class="w-full h-full object-cover rounded">`;
                 preview.classList.remove('hidden');
                 preview.classList.add('flex');
                 showToast("✅ पेमेंट स्क्रीनशॉट लोड किया गया!", 'success');
@@ -1481,12 +1524,16 @@
 
     // ✅ FIXED: Deposit Request Submit
     async function submitDepositRequest(btn) {
-        if (isAdminMode || !currentUser) return;
+        if (isAdminMode || !currentUser) {
+            showToast("❌ कृपया पहले लॉगिन करें।", 'error');
+            return;
+        }
         
         if (!uploadReceiptFile) {
             showToast("❌ कृपया भुगतान का स्क्रीनशॉट अपलोड करें।", 'error');
             return;
         }
+        
         if (currentUser.pendingDeposit) {
             showToast("❌ एक डिपॉजिट रिक्वेस्ट पहले से पेंडिंग है।", 'error');
             return;
@@ -1494,7 +1541,8 @@
 
         setButtonLoading(btn, true);
         try {
-            // Upload screenshot to Appwrite Storage
+            showToast("📤 स्क्रीनशॉट अपलोड हो रहा है...", 'info');
+            
             const uploadedFile = await storage.createFile(
                 SCREENSHOT_BUCKET_ID, 
                 ID.unique(), 
@@ -1516,14 +1564,22 @@
             uploadReceiptFile = null;
             document.getElementById('purchaseScreenshotName').innerText = "अपलोड इमेज";
             document.getElementById('purchaseScreenshotPreview').classList.add('hidden');
+            document.getElementById('purchaseScreenshotPreview').innerHTML = '';
             document.getElementById('customUSDAmount').value = "";
             document.getElementById('calculatedCoinsPreview').innerText = "0 CX";
+            document.getElementById('purchaseScreenshotFile').value = '';
 
             showToast("✅ पेमेंट स्क्रीनशॉट भेजा गया! सत्यापन के बाद वॉलेट में क्रेडिट होगा।", 'success');
             hidePaymentCard();
         } catch (e) {
             console.error('Deposit Error:', e);
-            showToast("❌ डिपॉजिट रिक्वेस्ट भेजने में त्रुटि! " + (e.message || "कृपया पुनः प्रयास करें।"), 'error');
+            if (e.message && e.message.includes('permission')) {
+                showToast("❌ Storage Permission Error! Appwrite Console में Bucket Permissions Check करें।", 'error');
+            } else if (e.message && e.message.includes('network')) {
+                showToast("❌ नेटवर्क Error! Internet Connection Check करें।", 'error');
+            } else {
+                showToast("❌ डिपॉजिट रिक्वेस्ट भेजने में त्रुटि! " + (e.message || "कृपया पुनः प्रयास करें।"), 'error');
+            }
         } finally {
             setButtonLoading(btn, false);
         }
@@ -1722,7 +1778,7 @@
     }
 
     // ============================================================
-    // PROFILE
+    // PROFILE - FIXED
     // ============================================================
     function renderProfileDetails() {
         if (isAdminMode || !currentUser) return;
@@ -1732,11 +1788,13 @@
         const myRef = currentUser.$id;
         document.getElementById('profileReferralCode').innerText = myRef;
 
-        // ✅ FIXED: Full referral link with proper URL
+        // ✅ FIXED: Correct referral link
         const finalShareUrl = `${window.location.origin}${window.location.pathname}?ref=${myRef}`;
         document.getElementById('referralShareLink').innerText = finalShareUrl;
 
-        document.getElementById('withdrawAvailable').innerText = `${parseFloat(currentUser.coins || 0).toFixed(2)} CX`;
+        // ✅ FIXED: Balance display with proper formatting
+        const balance = parseFloat(currentUser.coins || 0);
+        document.getElementById('withdrawAvailable').innerHTML = `${balance.toFixed(2)} CX`;
         document.getElementById('userWithdrawAddress').value = currentUser.withdrawal_address || '';
 
         const qrPreview = document.getElementById('userQrPreview');
@@ -1766,7 +1824,7 @@
         }
     }
 
-    // ✅ FIXED: Share Referral Link with proper URL
+    // ✅ FIXED: Share Referral Link
     function shareReferralLink() {
         if (isAdminMode || !currentUser) return;
         const myRef = currentUser.$id;
@@ -1782,7 +1840,7 @@
                 .then(() => showToast("✅ सफलतापूर्वक साझा किया गया!", 'success'))
                 .catch(() => showToast("शेयरिंग निरस्त की गई।", 'info'));
         } else {
-            legacyCopyFallback(shareText, "शेयर टेक्स्ट कॉपी हुआ!");
+            legacyCopyFallback(shareText, "✅ शेयर टेक्स्ट कॉपी हुआ!");
         }
     }
 
@@ -1968,6 +2026,21 @@
                 `;
                 listArea.appendChild(div);
             });
+        }
+    }
+
+    // ============================================================
+    // REFERRAL AUTO-FILL (URL Parameter)
+    // ============================================================
+    function checkReferralParam() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const ref = urlParams.get('ref');
+        if (ref) {
+            const referralInput = document.getElementById('regReferral');
+            if (referralInput) {
+                referralInput.value = ref;
+                showToast(`✅ रेफरल कोड ${ref} ऑटो-फिल हो गया!`, 'success');
+            }
         }
     }
 
@@ -2622,21 +2695,6 @@
     }
 
     // ============================================================
-    // REFERRAL AUTO-FILL (URL Parameter)
-    // ============================================================
-    function checkReferralParam() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const ref = urlParams.get('ref');
-        if (ref) {
-            const referralInput = document.getElementById('regReferral');
-            if (referralInput) {
-                referralInput.value = ref;
-                showToast(`✅ रेफरल कोड ${ref} ऑटो-फिल हो गया!`, 'success');
-            }
-        }
-    }
-
-    // ============================================================
     // ADMIN SESSION CHECK
     // ============================================================
     async function checkExistingAdminSession() {
@@ -2669,12 +2727,10 @@
                     showPage('dashboardPage');
                 } else {
                     showPage('registrationPage');
-                    // Check for referral parameter
                     checkReferralParam();
                 }
             } catch (e) {
                 showPage('registrationPage');
-                // Check for referral parameter
                 checkReferralParam();
             }
         }
