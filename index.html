@@ -78,6 +78,21 @@
             border-radius: 16px;
             padding: 24px;
         }
+        .session-id-box {
+            background: #0f172a;
+            border: 1px solid #2563eb;
+            border-radius: 12px;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .session-id-box .session-id {
+            font-size: 11px;
+            color: #60a5fa;
+            font-family: monospace;
+            word-break: break-all;
+        }
     </style>
 </head>
 <body class="text-white relative min-h-screen flex flex-col items-center justify-start">
@@ -110,7 +125,7 @@
             <!-- ========================================================= -->
             <div id="userPanelContainer">
 
-                <!-- REGISTRATION PAGE -->
+                <!-- REGISTRATION PAGE (Referral Auto-Fill Support) -->
                 <section id="registrationPage" class="app-page w-full space-y-6">
                     <div class="text-center space-y-2 py-6">
                         <div class="w-20 h-20 rounded-full bg-gradient-to-tr from-amber-500 to-yellow-300 flex items-center justify-center text-slate-950 font-extrabold text-3xl mx-auto gold-glow border-2 border-amber-300">CX</div>
@@ -272,7 +287,7 @@
                     </div>
                 </section>
 
-                <!-- PURCHASE -->
+                <!-- PURCHASE SECTION -->
                 <section id="purchasePage" class="app-page w-full hidden space-y-4">
                     <div class="bg-slate-900/90 backdrop-blur-md p-4 rounded-xl border border-slate-800/80">
                         <h3 class="text-sm font-bold text-amber-400"><i class="fa-solid fa-cart-shopping mr-1.5"></i> कॉइन परचेज करें</h3>
@@ -362,7 +377,9 @@
                     </div>
                 </section>
 
-                <!-- PROFILE -->
+                <!-- ========================================================= -->
+                <!-- PROFILE PAGE WITH SESSION SUPPORT                          -->
+                <!-- ========================================================= -->
                 <section id="profilePage" class="app-page w-full hidden space-y-4">
                     <div class="bg-slate-900/90 backdrop-blur-md p-4 rounded-xl border border-slate-800 flex items-center justify-between">
                         <div class="flex items-center gap-3">
@@ -379,6 +396,8 @@
                             <span id="profileReferralCode" class="text-xs font-bold text-amber-400 uppercase select-all font-mono">CX-XXXX</span>
                         </div>
                     </div>
+
+                    <!-- Invite Friends Section -->
                     <div class="bg-slate-900/95 backdrop-blur-md p-4 rounded-xl border border-slate-800 space-y-3">
                         <h4 class="text-xs font-bold text-amber-400"><i class="fa-solid fa-share-nodes mr-1.5"></i> Invite Friends & Earn 2%</h4>
                         <p class="text-[10px] text-slate-400">जब आपके द्वारा आमंत्रित सदस्य स्टेक करेंगे, आपको 2% बोनस मिलेगा!</p>
@@ -390,6 +409,8 @@
                             <i class="fa-solid fa-share-nodes"></i> Share Referral Link
                         </button>
                     </div>
+
+                    <!-- Withdrawal Setup -->
                     <div class="bg-slate-900/95 backdrop-blur-md p-4 rounded-xl border border-slate-800 space-y-3">
                         <h4 class="text-xs font-bold text-amber-400 border-b border-slate-800 pb-1.5"><i class="fa-solid fa-money-bill-transfer mr-1"></i> विथड्रॉवल सेटअप</h4>
                         <div class="bg-red-500/10 border border-red-500/30 rounded-lg p-2 text-center">
@@ -426,6 +447,8 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- My Referrals & Transactions -->
                     <div class="grid grid-cols-2 gap-2">
                         <button onclick="toggleMyReferralsModal(true)" class="bg-slate-900 border border-slate-800 text-slate-200 py-2.5 rounded-xl text-xs font-semibold hover:border-amber-500/40 transition-all btn-animate">
                             <i class="fa-solid fa-users mr-1 text-amber-400"></i> My Referrals
@@ -434,6 +457,29 @@
                             <i class="fa-solid fa-list-check mr-1 text-amber-400"></i> Transactions
                         </button>
                     </div>
+
+                    <!-- ========================================================= -->
+                    <!-- 🔥 SESSION SUPPORT SECTION (FIXED)                        -->
+                    <!-- ========================================================= -->
+                    <div class="bg-slate-900/90 backdrop-blur-md p-4 rounded-xl border border-blue-500/30 space-y-3">
+                        <div class="flex items-center gap-2 text-blue-400 text-xs font-bold">
+                            <i class="fa-solid fa-headset"></i> 
+                            <span>हेल्प & सपोर्ट (Session Private Messenger)</span>
+                        </div>
+                        <a href="https://getsession.org/download" target="_blank" class="block w-full bg-slate-950 border border-blue-500/40 hover:bg-blue-950/20 text-slate-200 text-xs py-2 px-3 rounded-lg flex items-center justify-between transition-all">
+                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-download text-blue-400"></i> सेशन ऐप डाउनलोड करें</span>
+                            <i class="fa-solid fa-external-link text-[10px] text-slate-500"></i>
+                        </a>
+                        <div class="session-id-box">
+                            <span class="session-id" id="sessionChatId">05f912bceb6aa605c84a64826fb856282788e8cf06484f48d3890481ebbc211938</span>
+                            <button onclick="copyToClipboard('sessionChatId', '✅ Session Chat ID कॉपी हो गई!')" class="text-blue-400 hover:text-white shrink-0 btn-animate text-xs">
+                                <i class="fa-solid fa-copy mr-1"></i> कॉपी
+                            </button>
+                        </div>
+                        <p class="text-[8px] text-slate-500 text-center">Session ID को कॉपी करें, Session ऐप में Paste करें और हमसे सीधे चैट करें।</p>
+                    </div>
+
+                    <!-- Logout -->
                     <button onclick="handleLogout()" class="w-full bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/30 font-semibold py-2.5 rounded-lg text-xs transition-all text-center btn-animate">
                         <i class="fa-solid fa-power-off mr-1.5"></i> लॉगआउट करें
                     </button>
@@ -1084,7 +1130,7 @@
     }
 
     // ============================================================
-    // REGISTRATION
+    // REGISTRATION (Referral Auto-Fill Support)
     // ============================================================
     async function handleRegistration(btn) {
         if (isAdminMode) return;
@@ -1350,7 +1396,7 @@
     }
 
     // ============================================================
-    // PURCHASE
+    // PURCHASE (FIXED - Deposit Request)
     // ============================================================
     function calculateCustomCoins(usdValue) {
         if (isAdminMode) return;
@@ -1427,26 +1473,33 @@
                 preview.innerHTML = `<img src="${e.target.result}" class="w-full h-full object-cover">`;
                 preview.classList.remove('hidden');
                 preview.classList.add('flex');
-                showToast("पेमेंट स्क्रीनशॉट लोड किया गया!", 'success');
+                showToast("✅ पेमेंट स्क्रीनशॉट लोड किया गया!", 'success');
             };
             reader.readAsDataURL(file);
         }
     }
 
+    // ✅ FIXED: Deposit Request Submit
     async function submitDepositRequest(btn) {
         if (isAdminMode || !currentUser) return;
+        
         if (!uploadReceiptFile) {
-            showToast("कृपया भुगतान का स्क्रीनशॉट अपलोड करें।", 'error');
+            showToast("❌ कृपया भुगतान का स्क्रीनशॉट अपलोड करें।", 'error');
             return;
         }
         if (currentUser.pendingDeposit) {
-            showToast("एक डिपॉजिट रिक्वेस्ट पहले से पेंडिंग है।", 'error');
+            showToast("❌ एक डिपॉजिट रिक्वेस्ट पहले से पेंडिंग है।", 'error');
             return;
         }
 
         setButtonLoading(btn, true);
         try {
-            const uploadedFile = await storage.createFile(SCREENSHOT_BUCKET_ID, ID.unique(), uploadReceiptFile);
+            // Upload screenshot to Appwrite Storage
+            const uploadedFile = await storage.createFile(
+                SCREENSHOT_BUCKET_ID, 
+                ID.unique(), 
+                uploadReceiptFile
+            );
 
             const newDeposit = {
                 amountUSD: selectedPurchaseUsd,
@@ -1455,19 +1508,22 @@
                 dateTime: new Date().toLocaleString('hi-IN')
             };
 
-            await saveUserFields({ pending_deposit: JSON.stringify(newDeposit) });
+            await saveUserFields({ 
+                pending_deposit: JSON.stringify(newDeposit) 
+            });
 
+            // Reset
             uploadReceiptFile = null;
             document.getElementById('purchaseScreenshotName').innerText = "अपलोड इमेज";
             document.getElementById('purchaseScreenshotPreview').classList.add('hidden');
             document.getElementById('customUSDAmount').value = "";
             document.getElementById('calculatedCoinsPreview').innerText = "0 CX";
 
-            showToast("पेमेंट स्क्रीनशॉट भेजा गया! सत्यापन के बाद वॉलेट में क्रेडिट होगा।", 'success');
+            showToast("✅ पेमेंट स्क्रीनशॉट भेजा गया! सत्यापन के बाद वॉलेट में क्रेडिट होगा।", 'success');
             hidePaymentCard();
         } catch (e) {
-            console.error(e);
-            showToast('डिपॉजिट रिक्वेस्ट भेजने में त्रुटि!', 'error');
+            console.error('Deposit Error:', e);
+            showToast("❌ डिपॉजिट रिक्वेस्ट भेजने में त्रुटि! " + (e.message || "कृपया पुनः प्रयास करें।"), 'error');
         } finally {
             setButtonLoading(btn, false);
         }
@@ -1676,7 +1732,8 @@
         const myRef = currentUser.$id;
         document.getElementById('profileReferralCode').innerText = myRef;
 
-        const finalShareUrl = `https://coinx-network.com/join?ref=${myRef}`;
+        // ✅ FIXED: Full referral link with proper URL
+        const finalShareUrl = `${window.location.origin}${window.location.pathname}?ref=${myRef}`;
         document.getElementById('referralShareLink').innerText = finalShareUrl;
 
         document.getElementById('withdrawAvailable').innerText = `${parseFloat(currentUser.coins || 0).toFixed(2)} CX`;
@@ -1709,10 +1766,11 @@
         }
     }
 
+    // ✅ FIXED: Share Referral Link with proper URL
     function shareReferralLink() {
         if (isAdminMode || !currentUser) return;
         const myRef = currentUser.$id;
-        const finalShareUrl = `https://coinx-network.com/join?ref=${myRef}`;
+        const finalShareUrl = `${window.location.origin}${window.location.pathname}?ref=${myRef}`;
         const shareText = `CoinX Network पर माइनिंग शुरू करें! मेरे रेफरल कोड ${myRef} का उपयोग करें: ${finalShareUrl}`;
 
         if (navigator.share) {
@@ -2153,7 +2211,7 @@
     }
 
     // ============================================================
-    // ADMIN DEPOSITS - FIXED
+    // ADMIN DEPOSITS
     // ============================================================
     function renderAdminDeposits() {
         if (!isAdminMode) return;
@@ -2201,7 +2259,6 @@
         });
     }
 
-    // ✅ FIXED: approveDeposit
     async function approveDeposit(userDocId, btn) {
         if (!isAdminMode) return;
         setButtonLoading(btn, true);
@@ -2245,7 +2302,6 @@
         }
     }
 
-    // ✅ FIXED: rejectDeposit
     async function rejectDeposit(userDocId, btn) {
         if (!isAdminMode) return;
         setButtonLoading(btn, true);
@@ -2280,7 +2336,7 @@
     }
 
     // ============================================================
-    // ADMIN WITHDRAWALS - FIXED
+    // ADMIN WITHDRAWALS
     // ============================================================
     function renderAdminWithdrawals() {
         if (!isAdminMode) return;
@@ -2333,7 +2389,6 @@
         });
     }
 
-    // ✅ FIXED: approveWithdrawal
     async function approveWithdrawal(userDocId, btn) {
         if (!isAdminMode) return;
         setButtonLoading(btn, true);
@@ -2377,7 +2432,6 @@
         }
     }
 
-    // ✅ FIXED: rejectWithdrawal
     async function rejectWithdrawal(userDocId, btn) {
         if (!isAdminMode) return;
         setButtonLoading(btn, true);
@@ -2568,6 +2622,21 @@
     }
 
     // ============================================================
+    // REFERRAL AUTO-FILL (URL Parameter)
+    // ============================================================
+    function checkReferralParam() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const ref = urlParams.get('ref');
+        if (ref) {
+            const referralInput = document.getElementById('regReferral');
+            if (referralInput) {
+                referralInput.value = ref;
+                showToast(`✅ रेफरल कोड ${ref} ऑटो-फिल हो गया!`, 'success');
+            }
+        }
+    }
+
+    // ============================================================
     // ADMIN SESSION CHECK
     // ============================================================
     async function checkExistingAdminSession() {
@@ -2600,9 +2669,13 @@
                     showPage('dashboardPage');
                 } else {
                     showPage('registrationPage');
+                    // Check for referral parameter
+                    checkReferralParam();
                 }
             } catch (e) {
                 showPage('registrationPage');
+                // Check for referral parameter
+                checkReferralParam();
             }
         }
     };
