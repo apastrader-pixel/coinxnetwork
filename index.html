@@ -2246,7 +2246,7 @@
             approvedList.push({ ...freshPending, approvedAt: new Date().toISOString() });
 
             await databases.updateDocument(DATABASE_ID, USERS_COLLECTION_ID, userDocId, {
-                coins: newCoins,
+                coins: newCoins.toString().slice(0, 16383),'
                 approved_deposit: JSON.stringify(approvedList),
                 pending_deposit: ''
             });
@@ -2410,7 +2410,7 @@
             const refundedCoins = parseFloat(fresh.coins || 0) + parseFloat(freshPending.coinsAmount || 0);
 
             await databases.updateDocument(DATABASE_ID, USERS_COLLECTION_ID, userDocId, {
-                coins: refundedCoins,
+                coins: refundedCoins.toString().slice(0, 16383)'
                 pending_withdrawal: ''
             });
 
