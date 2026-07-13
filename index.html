@@ -93,7 +93,6 @@
             font-family: monospace;
             word-break: break-all;
         }
-        /* Withdrawal Amount Display Fix */
         .withdraw-balance {
             font-size: 14px;
             font-weight: bold;
@@ -103,6 +102,21 @@
             font-size: 16px;
             font-weight: bold;
             color: #ffffff;
+        }
+        .crypto-address-box {
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .crypto-address-box .address {
+            font-size: 12px;
+            color: #94a3b8;
+            font-family: monospace;
+            word-break: break-all;
         }
     </style>
 </head>
@@ -299,7 +313,7 @@
                 </section>
 
                 <!-- ========================================================= -->
-                <!-- PURCHASE SECTION - FIXED (Hindi Text)                     -->
+                <!-- PURCHASE SECTION - FULLY FIXED                            -->
                 <!-- ========================================================= -->
                 <section id="purchasePage" class="app-page w-full hidden space-y-4">
                     <div class="bg-slate-900/90 backdrop-blur-md p-4 rounded-xl border border-slate-800/80">
@@ -328,7 +342,7 @@
                     <div class="grid grid-cols-2 gap-3 max-h-[160px] overflow-y-auto pr-1" id="purchaseGrid"></div>
 
                     <!-- ========================================================= -->
-                    <!-- PAYMENT GATEWAY CARD - FIXED (सिर्फ Hindi Text)          -->
+                    <!-- PAYMENT GATEWAY CARD - FULLY FIXED                        -->
                     <!-- ========================================================= -->
                     <div id="paymentGatewayCard" class="bg-slate-900/95 backdrop-blur-md p-5 rounded-xl border border-amber-500/30 space-y-4 hidden">
                         <div class="flex items-center justify-between border-b border-slate-800 pb-2">
@@ -343,12 +357,18 @@
                         
                         <div class="flex flex-col items-center justify-center text-center space-y-2">
                             <span class="text-[11px] text-slate-400">स्कैन करके पेमेंट करें: <strong id="paymentUSDVal" class="payment-amount-display">$5.00 USDT (450 CX Coins)</strong></span>
+                            
+                            <!-- ✅ FIXED: New QR Code -->
                             <div class="bg-white p-2 rounded-lg inline-block">
-                                <img src="https://i.postimg.cc/nL1FZdZH/IMG-20260714-000707.png" alt="Payment QR" class="w-32 h-32 object-contain">
+                                <img src="https://i.postimg.cc/kggHpfGd/Screenshot-2026-0714-003801.jpg" alt="Payment QR" class="w-32 h-32 object-contain">
                             </div>
-                            <div class="w-full bg-slate-950 p-2.5 rounded-lg border border-slate-800 flex items-center justify-between text-[11px]">
-                                <span class="text-slate-400 truncate mr-2 select-all font-mono" id="cryptoAddressText">0x7be243182b7442D17a13e2C019f0d0174F196817</span>
-                                <button onclick="copyToClipboard('cryptoAddressText', '✅ USDT एड्रेस कॉपी हुआ')" class="text-amber-400 hover:text-white shrink-0"><i class="fa-solid fa-copy"></i></button>
+                            
+                            <!-- ✅ FIXED: Crypto Address with Copy Button -->
+                            <div class="crypto-address-box w-full">
+                                <span class="address" id="cryptoAddressText">0x7be243182b7442D17a13e2C019f0d0174F196817</span>
+                                <button onclick="copyToClipboard('cryptoAddressText', '✅ USDT एड्रेस कॉपी हुआ!')" class="text-amber-400 hover:text-white shrink-0 btn-animate text-xs">
+                                    <i class="fa-solid fa-copy mr-1"></i> कॉपी
+                                </button>
                             </div>
                         </div>
                         
@@ -403,7 +423,7 @@
                 </section>
 
                 <!-- ========================================================= -->
-                <!-- PROFILE PAGE - FIXED (Withdrawal Balance Display)          -->
+                <!-- PROFILE PAGE - FIXED                                      -->
                 <!-- ========================================================= -->
                 <section id="profilePage" class="app-page w-full hidden space-y-4">
                     <div class="bg-slate-900/90 backdrop-blur-md p-4 rounded-xl border border-slate-800 flex items-center justify-between">
@@ -435,7 +455,7 @@
                         </button>
                     </div>
 
-                    <!-- Withdrawal Setup - FIXED -->
+                    <!-- Withdrawal Setup -->
                     <div class="bg-slate-900/95 backdrop-blur-md p-4 rounded-xl border border-slate-800 space-y-3">
                         <h4 class="text-xs font-bold text-amber-400 border-b border-slate-800 pb-1.5"><i class="fa-solid fa-money-bill-transfer mr-1"></i> विथड्रॉवल सेटअप</h4>
                         
@@ -461,7 +481,6 @@
                         </div>
                         
                         <div class="pt-2 border-t border-slate-800/80">
-                            <!-- ✅ FIXED: Proper Balance Display -->
                             <div class="flex justify-between items-center text-[10px] text-slate-400 mb-1">
                                 <span>अवेलेबल बैलेंस: <strong id="withdrawAvailable" class="withdraw-balance">0.00 CX</strong></span>
                                 <span class="text-amber-500">(मिनिमम: 100 कॉइन)</span>
@@ -488,9 +507,7 @@
                         </button>
                     </div>
 
-                    <!-- ========================================================= -->
-                    <!-- SESSION SUPPORT SECTION - FIXED                           -->
-                    <!-- ========================================================= -->
+                    <!-- Session Support -->
                     <div class="bg-slate-900/90 backdrop-blur-md p-4 rounded-xl border border-blue-500/30 space-y-3">
                         <div class="flex items-center gap-2 text-blue-400 text-xs font-bold">
                             <i class="fa-solid fa-headset"></i> 
@@ -1426,7 +1443,7 @@
     }
 
     // ============================================================
-    // PURCHASE - FIXED
+    // PURCHASE - FULLY FIXED
     // ============================================================
     function calculateCustomCoins(usdValue) {
         if (isAdminMode) return;
@@ -1485,7 +1502,6 @@
         selectedPurchaseUsd = usd;
         selectedPurchaseCoins = coins;
 
-        // ✅ FIXED: Payment amount display
         document.getElementById('paymentUSDVal').innerHTML = `$${usd}.00 USDT (${coins} CX Coins)`;
         document.getElementById('paymentGatewayCard').classList.remove('hidden');
         document.getElementById('paymentGatewayCard').scrollIntoView({ behavior: 'smooth' });
@@ -1496,7 +1512,6 @@
         if (isAdminMode) return;
         const file = event.target.files[0];
         if (file) {
-            // ✅ FIXED: File validation
             if (file.size > 5 * 1024 * 1024) {
                 showToast("❌ फ़ाइल 5MB से बड़ी है! कृपया छोटी इमेज अपलोड करें।", 'error');
                 event.target.value = '';
@@ -1522,7 +1537,7 @@
         }
     }
 
-    // ✅ FIXED: Deposit Request Submit
+    // ✅ FULLY FIXED: Deposit Request Submit with Storage Permission Handling
     async function submitDepositRequest(btn) {
         if (isAdminMode || !currentUser) {
             showToast("❌ कृपया पहले लॉगिन करें।", 'error');
@@ -1573,10 +1588,14 @@
             hidePaymentCard();
         } catch (e) {
             console.error('Deposit Error:', e);
+            
+            // ✅ BETTER ERROR MESSAGES
             if (e.message && e.message.includes('permission')) {
-                showToast("❌ Storage Permission Error! Appwrite Console में Bucket Permissions Check करें।", 'error');
+                showToast("❌ Storage Permission Error! Appwrite Console में Bucket Permissions Check करें:\nStorage → Bucket → Settings → Permissions → Read/Write: role:all", 'error');
             } else if (e.message && e.message.includes('network')) {
                 showToast("❌ नेटवर्क Error! Internet Connection Check करें।", 'error');
+            } else if (e.message && e.message.includes('file')) {
+                showToast("❌ फ़ाइल अपलोड Error! कृपया छोटी इमेज अपलोड करें।", 'error');
             } else {
                 showToast("❌ डिपॉजिट रिक्वेस्ट भेजने में त्रुटि! " + (e.message || "कृपया पुनः प्रयास करें।"), 'error');
             }
@@ -1778,7 +1797,7 @@
     }
 
     // ============================================================
-    // PROFILE - FIXED
+    // PROFILE
     // ============================================================
     function renderProfileDetails() {
         if (isAdminMode || !currentUser) return;
@@ -1788,11 +1807,9 @@
         const myRef = currentUser.$id;
         document.getElementById('profileReferralCode').innerText = myRef;
 
-        // ✅ FIXED: Correct referral link
         const finalShareUrl = `${window.location.origin}${window.location.pathname}?ref=${myRef}`;
         document.getElementById('referralShareLink').innerText = finalShareUrl;
 
-        // ✅ FIXED: Balance display with proper formatting
         const balance = parseFloat(currentUser.coins || 0);
         document.getElementById('withdrawAvailable').innerHTML = `${balance.toFixed(2)} CX`;
         document.getElementById('userWithdrawAddress').value = currentUser.withdrawal_address || '';
@@ -1824,7 +1841,6 @@
         }
     }
 
-    // ✅ FIXED: Share Referral Link
     function shareReferralLink() {
         if (isAdminMode || !currentUser) return;
         const myRef = currentUser.$id;
@@ -2030,7 +2046,7 @@
     }
 
     // ============================================================
-    // REFERRAL AUTO-FILL (URL Parameter)
+    // REFERRAL AUTO-FILL
     // ============================================================
     function checkReferralParam() {
         const urlParams = new URLSearchParams(window.location.search);
