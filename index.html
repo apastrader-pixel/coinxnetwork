@@ -143,28 +143,19 @@
                     </div>
                 </section>
 
-                <!-- ========================================================= -->
-                <!-- ✅ REGISTRATION SUCCESS PAGE (FULLY FIXED)                -->
-                <!-- ========================================================= -->
+                <!-- REGISTRATION SUCCESS PAGE -->
                 <section id="regSuccessPage" class="app-page w-full hidden space-y-6 text-center py-4">
                     <div class="bg-slate-900/95 backdrop-blur-md p-6 rounded-2xl border border-amber-500/40 space-y-6 shadow-2xl relative overflow-hidden">
                         <div id="confettiContainer" class="absolute inset-0 pointer-events-none overflow-hidden"></div>
                         <div class="relative z-10">
-                            <!-- Success Icon -->
                             <div class="w-20 h-20 bg-green-500/20 text-green-400 rounded-full flex items-center justify-center text-4xl mx-auto border border-green-500/40 animate-bounce">
                                 <i class="fa-solid fa-circle-check"></i>
                             </div>
-                            
-                            <!-- Congratulations -->
                             <div class="space-y-2 mt-4">
                                 <h2 class="text-3xl font-bold text-green-400">🎉 बधाई हो! 🎉</h2>
                                 <p class="text-sm text-amber-400 font-semibold">आपका रजिस्ट्रेशन सफलतापूर्वक पूर्ण हुआ!</p>
                                 <p class="text-xs text-slate-400">अब आप CoinX Network के सदस्य हैं।</p>
                             </div>
-
-                            <!-- ============================================= -->
-                            <!-- 🔥 USER CREDENTIALS DISPLAY (FIXED)           -->
-                            <!-- ============================================= -->
                             <div class="success-card text-left space-y-4 mt-4">
                                 <div>
                                     <div class="label">📧 आपकी ईमेल आईडी (Login ID)</div>
@@ -175,7 +166,6 @@
                                         </button>
                                     </div>
                                 </div>
-                                
                                 <div>
                                     <div class="label">🔑 आपका पासवर्ड (Password)</div>
                                     <div class="credential-box mt-1">
@@ -184,16 +174,12 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- Important Note -->
                             <div class="bg-blue-500/10 border border-blue-500/30 rounded-xl p-3 text-left mt-4">
                                 <p class="text-[10px] text-blue-400 flex items-start gap-2">
                                     <i class="fa-solid fa-circle-info mt-0.5"></i>
                                     <span>कृपया अपनी <strong>ईमेल आईडी</strong> और <strong>पासवर्ड</strong> सुरक्षित रखें। यही आपका लॉगिन क्रेडेंशियल है।</span>
                                 </p>
                             </div>
-
-                            <!-- ✅ LOGIN BUTTON (FIXED) -->
                             <button onclick="showPage('loginPage')" class="w-full bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-600 hover:to-yellow-500 text-slate-950 font-bold py-3.5 rounded-xl transition-all btn-animate text-sm flex items-center justify-center gap-2 mt-4">
                                 <i class="fa-solid fa-right-to-bracket"></i> 
                                 <span>लॉगिन स्क्रीन पर जाएं</span>
@@ -1098,7 +1084,7 @@
     }
 
     // ============================================================
-    // ✅ REGISTRATION (FULLY FIXED)
+    // REGISTRATION
     // ============================================================
     async function handleRegistration(btn) {
         if (isAdminMode) return;
@@ -1118,7 +1104,6 @@
 
         setButtonLoading(btn, true);
         try {
-            // Check if user already exists in database
             const existingDocs = await databases.listDocuments(
                 DATABASE_ID,
                 USERS_COLLECTION_ID,
@@ -1131,7 +1116,6 @@
                 return;
             }
 
-            // Create user in Auth
             let newAccount;
             try {
                 newAccount = await account.create(ID.unique(), email, phone, name);
@@ -1144,15 +1128,12 @@
                 throw authError;
             }
 
-            // Clear any existing session
             try {
                 await account.deleteSession('current');
             } catch (e) {}
 
-            // Create new session
             await account.createEmailPasswordSession(email, phone);
 
-            // Create user document
             const userData = {
                 name: name,
                 email: email,
@@ -1179,12 +1160,10 @@
                 userData
             );
 
-            // Save referral
             if (referralInput) {
                 localStorage.setItem('cx_pending_referral_code', referralInput);
             }
 
-            // ✅ Show success page with credentials
             document.getElementById('successUserId').innerText = email;
             document.getElementById('successPassword').innerText = phone;
 
@@ -1205,7 +1184,7 @@
     }
 
     // ============================================================
-    // ✅ LOGIN (FULLY FIXED)
+    // LOGIN
     // ============================================================
     async function handleLogin(btn) {
         if (isAdminMode) return;
@@ -1219,13 +1198,11 @@
 
         setButtonLoading(btn, true);
         try {
-            // Clear existing session first
             try {
                 await account.get();
                 await account.deleteSession('current');
             } catch (e) {}
 
-            // Create new session
             await account.createEmailPasswordSession(email, password);
             const loaded = await loadCurrentUserData();
 
@@ -1960,7 +1937,6 @@
 
         setButtonLoading(btn, true);
         try {
-            // Clear existing session
             try {
                 await account.get();
                 await account.deleteSession('current');
@@ -2177,7 +2153,7 @@
     }
 
     // ============================================================
-    // ADMIN DEPOSITS
+    // ADMIN DEPOSITS - FIXED
     // ============================================================
     function renderAdminDeposits() {
         if (!isAdminMode) return;
@@ -2225,12 +2201,15 @@
         });
     }
 
+    // ✅ FIXED: approveDeposit
     async function approveDeposit(userDocId, btn) {
         if (!isAdminMode) return;
         setButtonLoading(btn, true);
         const uIndex = users.findIndex(u => u.$id === userDocId);
-        if (uIndex === -1) { setButtonLoading(btn, false); return; }
-
+        if (uIndex === -1) {
+            setButtonLoading(btn, false);
+            return;
+        }
         try {
             const fresh = await databases.getDocument(DATABASE_ID, USERS_COLLECTION_ID, userDocId);
             const freshPending = parseJsonSafe(fresh.pending_deposit, null);
@@ -2246,7 +2225,7 @@
             approvedList.push({ ...freshPending, approvedAt: new Date().toISOString() });
 
             await databases.updateDocument(DATABASE_ID, USERS_COLLECTION_ID, userDocId, {
-                coins: Math.min(newCoins, 9223372036854775807),
+                coins: newCoins,
                 approved_deposit: JSON.stringify(approvedList),
                 pending_deposit: ''
             });
@@ -2266,15 +2245,19 @@
         }
     }
 
+    // ✅ FIXED: rejectDeposit
     async function rejectDeposit(userDocId, btn) {
         if (!isAdminMode) return;
         setButtonLoading(btn, true);
         const uIndex = users.findIndex(u => u.$id === userDocId);
-        if (uIndex === -1) { setButtonLoading(btn, false); return; }
-
+        if (uIndex === -1) {
+            setButtonLoading(btn, false);
+            return;
+        }
         try {
             const fresh = await databases.getDocument(DATABASE_ID, USERS_COLLECTION_ID, userDocId);
-            if (!parseJsonSafe(fresh.pending_deposit, null)) {
+            const freshPending = parseJsonSafe(fresh.pending_deposit, null);
+            if (!freshPending) {
                 showToast('यह डिपॉजिट पहले ही प्रोसेस हो चुका है!', 'info');
                 users[uIndex].pendingDeposit = null;
                 renderAdminDeposits();
@@ -2297,7 +2280,7 @@
     }
 
     // ============================================================
-    // ADMIN WITHDRAWALS
+    // ADMIN WITHDRAWALS - FIXED
     // ============================================================
     function renderAdminWithdrawals() {
         if (!isAdminMode) return;
@@ -2350,12 +2333,15 @@
         });
     }
 
+    // ✅ FIXED: approveWithdrawal
     async function approveWithdrawal(userDocId, btn) {
         if (!isAdminMode) return;
         setButtonLoading(btn, true);
         const uIndex = users.findIndex(u => u.$id === userDocId);
-        if (uIndex === -1) { setButtonLoading(btn, false); return; }
-
+        if (uIndex === -1) {
+            setButtonLoading(btn, false);
+            return;
+        }
         try {
             const fresh = await databases.getDocument(DATABASE_ID, USERS_COLLECTION_ID, userDocId);
             const freshPending = parseJsonSafe(fresh.pending_withdrawal, null);
@@ -2391,12 +2377,15 @@
         }
     }
 
+    // ✅ FIXED: rejectWithdrawal
     async function rejectWithdrawal(userDocId, btn) {
         if (!isAdminMode) return;
         setButtonLoading(btn, true);
         const uIndex = users.findIndex(u => u.$id === userDocId);
-        if (uIndex === -1) { setButtonLoading(btn, false); return; }
-
+        if (uIndex === -1) {
+            setButtonLoading(btn, false);
+            return;
+        }
         try {
             const fresh = await databases.getDocument(DATABASE_ID, USERS_COLLECTION_ID, userDocId);
             const freshPending = parseJsonSafe(fresh.pending_withdrawal, null);
@@ -2410,8 +2399,7 @@
             const refundedCoins = parseFloat(fresh.coins || 0) + parseFloat(freshPending.coinsAmount || 0);
 
             await databases.updateDocument(DATABASE_ID, USERS_COLLECTION_ID, userDocId, {
-                coins: Math.min(refundedCoins, 9223372036854775807),
-
+                coins: refundedCoins,
                 pending_withdrawal: ''
             });
 
