@@ -224,7 +224,7 @@
         .slider-container {
             position: relative;
             width: 100%;
-            height: 220px;
+            height: 240px;
             overflow: hidden;
             border-radius: 16px;
         }
@@ -232,7 +232,7 @@
             display: flex;
             width: 1500%;
             height: 100%;
-            animation: slide 60s infinite ease-in-out;
+            animation: slide 65s infinite ease-in-out;
         }
         .slider-track .slide-item {
             width: 6.66%;
@@ -250,20 +250,47 @@
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 16px 14px;
-            background: linear-gradient(transparent, rgba(0,0,0,0.85));
+            padding: 18px 16px 14px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.88));
             color: white;
+            text-align: center;
         }
-        .slide-text h3 { font-size: 14px; font-weight: bold; color: #f59e0b; }
-        .slide-text p { font-size: 10px; color: #e2e8f0; }
-        .slide-text .badge {
+        .slide-text .quote-icon {
+            font-size: 18px;
+            color: #f59e0b;
+            display: block;
+            margin-bottom: 2px;
+        }
+        .slide-text .quote-line {
+            font-size: 14px;
+            font-weight: 600;
+            color: #fde68a;
+            text-shadow: 0 0 20px rgba(245, 158, 11, 0.4), 0 2px 8px rgba(0,0,0,0.8);
+            letter-spacing: 0.3px;
+            line-height: 1.5;
+            display: block;
+        }
+        .slide-text .quote-line2 {
+            font-size: 13px;
+            font-weight: 400;
+            color: #e2e8f0;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+            line-height: 1.4;
+            display: block;
+            margin-top: 2px;
+        }
+        .slide-text .quote-badge {
             display: inline-block;
-            background: #f59e0b;
-            color: #0f172a;
-            padding: 2px 10px;
+            background: rgba(245, 158, 11, 0.25);
+            color: #f59e0b;
+            padding: 2px 14px;
             border-radius: 20px;
             font-size: 8px;
             font-weight: bold;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            margin-top: 4px;
+            letter-spacing: 1px;
+            backdrop-filter: blur(4px);
         }
         @keyframes slide {
             0%, 5% { transform: translateX(0); }
@@ -284,7 +311,7 @@
         }
         .slider-dots {
             position: absolute;
-            bottom: 8px;
+            bottom: 6px;
             left: 0;
             right: 0;
             text-align: center;
@@ -299,7 +326,7 @@
             margin: 0 3px;
             transition: all 0.5s;
         }
-        .slider-dots span.active { background: #f59e0b; width: 20px; border-radius: 10px; }
+        .slider-dots span.active { background: #f59e0b; width: 22px; border-radius: 10px; }
     </style>
 </head>
 <body class="text-white relative min-h-screen flex flex-col items-center justify-start">
@@ -445,68 +472,158 @@
                 <!-- DASHBOARD -->
                 <section id="dashboardPage" class="app-page w-full hidden space-y-4">
 
-                    <!-- ===== SLIDER: 15 Nature / Live Images ===== -->
+                    <!-- ===== SLIDER: 15 Nature Images with Motivational Quotes ===== -->
                     <div class="slider-container">
                         <div class="slider-track">
+                            <!-- 1 -->
                             <div class="slide-item">
-                                <img src="https://picsum.photos/seed/garden1/600/400" alt="Garden">
-                                <div class="slide-text"><h3>🌿 बगीचा</h3><p>हरियाली और शांति</p><span class="badge">🌳 गार्डन</span></div>
+                                <img src="https://picsum.photos/seed/garden1/600/400" alt="Nature">
+                                <div class="slide-text">
+                                    <span class="quote-icon">🦁</span>
+                                    <span class="quote-line">शेर कभी भीड़ देखकर रास्ता नहीं बदलता।</span>
+                                    <span class="quote-line2">क्योंकि जंगल का राजा हमेशा अकेला चलता है।</span>
+                                    <span class="quote-badge">✦ प्रेरणा ✦</span>
+                                </div>
                             </div>
+                            <!-- 2 -->
                             <div class="slide-item">
                                 <img src="https://picsum.photos/seed/flowers2/600/400" alt="Flowers">
-                                <div class="slide-text"><h3>🌸 फूलों की बहार</h3><p>रंग-बिरंगे फूल</p><span class="badge">🌺 फूल</span></div>
+                                <div class="slide-text">
+                                    <span class="quote-icon">🌟</span>
+                                    <span class="quote-line">जो आज तुम्हारा मज़ाक उड़ा रहे हैं।</span>
+                                    <span class="quote-line2">कल वही तुम्हारी सफलता पर ताली बजाएँगे।</span>
+                                    <span class="quote-badge">✦ विश्वास ✦</span>
+                                </div>
                             </div>
+                            <!-- 3 -->
                             <div class="slide-item">
                                 <img src="https://picsum.photos/seed/leaves3/600/400" alt="Leaves">
-                                <div class="slide-text"><h3>🍃 हरी पत्तियाँ</h3><p>प्रकृति की हरियाली</p><span class="badge">🌿 पत्ते</span></div>
+                                <div class="slide-text">
+                                    <span class="quote-icon">📛</span>
+                                    <span class="quote-line">नाम ऐसा बनाओ कि लोग पहचान से नहीं।</span>
+                                    <span class="quote-line2">तुम्हारे काम से तुम्हें याद रखें।</span>
+                                    <span class="quote-badge">✦ पहचान ✦</span>
+                                </div>
                             </div>
+                            <!-- 4 -->
                             <div class="slide-item">
                                 <img src="https://picsum.photos/seed/birds4/600/400" alt="Birds">
-                                <div class="slide-text"><h3>🕊️ पक्षियों का कलरव</h3><p>आज़ादी की उड़ान</p><span class="badge">🐦 पक्षी</span></div>
+                                <div class="slide-text">
+                                    <span class="quote-icon">💭</span>
+                                    <span class="quote-line">सपने देखने वाले बहुत मिलेंगे।</span>
+                                    <span class="quote-line2">उन्हें पूरा करने वाले बहुत कम होते हैं।</span>
+                                    <span class="quote-badge">✦ सपना ✦</span>
+                                </div>
                             </div>
+                            <!-- 5 -->
                             <div class="slide-item">
                                 <img src="https://picsum.photos/seed/trading5/600/400" alt="Trading Chart">
-                                <div class="slide-text"><h3>📈 ट्रेडिंग चार्ट</h3><p>बाज़ार का उतार-चढ़ाव</p><span class="badge">📊 चार्ट</span></div>
+                                <div class="slide-text">
+                                    <span class="quote-icon">⚔️</span>
+                                    <span class="quote-line">जब तक जीत नहीं मिलती।</span>
+                                    <span class="quote-line2">तब तक लड़ना ही असली पहचान है।</span>
+                                    <span class="quote-badge">✦ संघर्ष ✦</span>
+                                </div>
                             </div>
+                            <!-- 6 -->
                             <div class="slide-item">
                                 <img src="https://picsum.photos/seed/office6/600/400" alt="Office Meeting">
-                                <div class="slide-text"><h3>🏢 ऑफिस मीटिंग</h3><p>टीम वर्क और योजना</p><span class="badge">💼 मीटिंग</span></div>
+                                <div class="slide-text">
+                                    <span class="quote-icon">🌊</span>
+                                    <span class="quote-line">तूफानों से डरकर नाव पार नहीं होती।</span>
+                                    <span class="quote-line2">हिम्मत करने वालों की कभी हार नहीं होती।</span>
+                                    <span class="quote-badge">✦ हिम्मत ✦</span>
+                                </div>
                             </div>
+                            <!-- 7 -->
                             <div class="slide-item">
                                 <img src="https://picsum.photos/seed/mountains7/600/400" alt="Mountains">
-                                <div class="slide-text"><h3>🏔️ पहाड़</h3><p>स्वर्ग की सैर</p><span class="badge">⛰️ पहाड़</span></div>
+                                <div class="slide-text">
+                                    <span class="quote-icon">🤫</span>
+                                    <span class="quote-line">अपनी मेहनत इतनी ख़ामोशी से करो।</span>
+                                    <span class="quote-line2">कि सफलता खुद शोर मचा दे।</span>
+                                    <span class="quote-badge">✦ मेहनत ✦</span>
+                                </div>
                             </div>
+                            <!-- 8 -->
                             <div class="slide-item">
                                 <img src="https://picsum.photos/seed/sunset8/600/400" alt="Sunset">
-                                <div class="slide-text"><h3>🌅 सूर्यास्त</h3><p>शाम की सुहानी बेला</p><span class="badge">🌇 सूर्यास्त</span></div>
+                                <div class="slide-text">
+                                    <span class="quote-icon">🙏</span>
+                                    <span class="quote-line">जिस दिन तुमने खुद पर विश्वास कर लिया।</span>
+                                    <span class="quote-line2">उस दिन दुनिया की कोई ताकत तुम्हें रोक नहीं सकती।</span>
+                                    <span class="quote-badge">✦ विश्वास ✦</span>
+                                </div>
                             </div>
+                            <!-- 9 -->
                             <div class="slide-item">
                                 <img src="https://picsum.photos/seed/river9/600/400" alt="River">
-                                <div class="slide-text"><h3>🌊 नदी</h3><p>शीतल और निर्मल</p><span class="badge">💧 नदी</span></div>
+                                <div class="slide-text">
+                                    <span class="quote-icon">👑</span>
+                                    <span class="quote-line">सिंहासन उन्हीं को मिलता है।</span>
+                                    <span class="quote-line2">जो खुद को हर दिन पहले से बेहतर बनाते हैं।</span>
+                                    <span class="quote-badge">✦ बेहतरी ✦</span>
+                                </div>
                             </div>
+                            <!-- 10 -->
                             <div class="slide-item">
                                 <img src="https://picsum.photos/seed/forest10/600/400" alt="Forest">
-                                <div class="slide-text"><h3>🌳 जंगल</h3><p>प्रकृति की गोद में</p><span class="badge">🌲 जंगल</span></div>
+                                <div class="slide-text">
+                                    <span class="quote-icon">🔥</span>
+                                    <span class="quote-line">आज पसीना बहाओ, कल दुनिया सलाम करेगी।</span>
+                                    <span class="quote-line2">मेहनत की आग में तपकर ही सोना चमकता है।</span>
+                                    <span class="quote-badge">✦ तपस्या ✦</span>
+                                </div>
                             </div>
+                            <!-- 11 -->
                             <div class="slide-item">
                                 <img src="https://picsum.photos/seed/market11/600/400" alt="Market">
-                                <div class="slide-text"><h3>🏪 बाजार</h3><p>व्यापार की रौनक</p><span class="badge">🛒 मार्केट</span></div>
+                                <div class="slide-text">
+                                    <span class="quote-icon">🌅</span>
+                                    <span class="quote-line">हर सुबह एक नई शुरुआत है।</span>
+                                    <span class="quote-line2">अपने सपनों को पंख लगाओ और उड़ान भरो।</span>
+                                    <span class="quote-badge">✦ शुरुआत ✦</span>
+                                </div>
                             </div>
+                            <!-- 12 -->
                             <div class="slide-item">
                                 <img src="https://picsum.photos/seed/butterfly12/600/400" alt="Butterfly">
-                                <div class="slide-text"><h3>🦋 तितली</h3><p>रंगों की उड़ान</p><span class="badge">🦋 तितली</span></div>
+                                <div class="slide-text">
+                                    <span class="quote-icon">📈</span>
+                                    <span class="quote-line">जीवन में उतार-चढ़ाव आते हैं।</span>
+                                    <span class="quote-line2">पर हार न मानो, मंजिल पास है।</span>
+                                    <span class="quote-badge">✦ धैर्य ✦</span>
+                                </div>
                             </div>
+                            <!-- 13 -->
                             <div class="slide-item">
                                 <img src="https://picsum.photos/seed/rain13/600/400" alt="Rain">
-                                <div class="slide-text"><h3>🌧️ बारिश</h3><p>बूंदों का संगीत</p><span class="badge">🌧️ बारिश</span></div>
+                                <div class="slide-text">
+                                    <span class="quote-icon">🏆</span>
+                                    <span class="quote-line">सफलता उन्हीं को मिलती है।</span>
+                                    <span class="quote-line2">जो हार से डरते नहीं हैं।</span>
+                                    <span class="quote-badge">✦ सफलता ✦</span>
+                                </div>
                             </div>
+                            <!-- 14 -->
                             <div class="slide-item">
                                 <img src="https://picsum.photos/seed/beach14/600/400" alt="Beach">
-                                <div class="slide-text"><h3>🏖️ समुद्र तट</h3><p>लहरों का किनारा</p><span class="badge">🌊 समुद्र</span></div>
+                                <div class="slide-text">
+                                    <span class="quote-icon">🎯</span>
+                                    <span class="quote-line">अपने लक्ष्य पर नज़र रखो।</span>
+                                    <span class="quote-line2">दुनिया की नज़रें तुम्हारी तरफ होंगी।</span>
+                                    <span class="quote-badge">✦ लक्ष्य ✦</span>
+                                </div>
                             </div>
+                            <!-- 15 -->
                             <div class="slide-item">
                                 <img src="https://picsum.photos/seed/stars15/600/400" alt="Stars">
-                                <div class="slide-text"><h3>⭐ तारे</h3><p>रात का जादू</p><span class="badge">🌟 तारे</span></div>
+                                <div class="slide-text">
+                                    <span class="quote-icon">⭐</span>
+                                    <span class="quote-line">मेहनत करो इतनी कि किस्मत भी झुक जाए।</span>
+                                    <span class="quote-line2">सपने सच करने की ताकत रखो।</span>
+                                    <span class="quote-badge">✦ सपना ✦</span>
+                                </div>
                             </div>
                         </div>
                         <div class="slider-dots">
@@ -524,7 +641,6 @@
                             </div>
                             <div>
                                 <h4 id="userWelcomeName" class="font-bold text-sm text-slate-200">User</h4>
-                                <!-- Removed ID: CX-XXXXXX -->
                             </div>
                         </div>
                         <div class="text-right">
@@ -574,7 +690,7 @@
                         </div>
                     </div>
 
-                    <!-- Mining Star - Now requires staking -->
+                    <!-- Mining Star - Now requires staking + Voice -->
                     <div class="bg-slate-900/90 backdrop-blur-md p-6 rounded-2xl border border-slate-800/80 flex flex-col items-center justify-center text-center py-8 space-y-5">
                         <div class="space-y-1">
                             <h3 class="text-sm font-semibold tracking-wider text-slate-300 uppercase">🌟 माइनिंग रिवॉर्ड स्टार</h3>
@@ -871,7 +987,7 @@
             </div>
 
             <!-- ========================================================= -->
-            <!-- ADMIN PANEL (Secret)                                       -->
+            <!-- ADMIN PANEL (Secret) – with individual unlock buttons      -->
             <!-- ========================================================= -->
             <div id="adminPanelContainer" class="hidden">
                 <section id="adminLoginPage" class="admin-page w-full space-y-6">
@@ -903,9 +1019,7 @@
                             <p class="text-[9px] text-slate-400">सिंक्रोनाइज्ड: Appwrite Cloud Active</p>
                         </div>
                         <div class="flex gap-1.5">
-                            <button onclick="fastForwardStakes()" class="bg-yellow-500 hover:bg-yellow-600 text-slate-950 text-[9px] font-bold px-2 py-1 rounded shadow btn-animate">
-                                <i class="fa-solid fa-forward"></i> Fast Test
-                            </button>
+                            <!-- Fast Test button removed per user request -->
                             <button onclick="logoutAdmin()" class="bg-red-500/10 text-red-400 hover:bg-red-500 hover:text-white text-[9px] font-bold px-2 py-1 rounded border border-red-500/30 btn-animate">
                                 <i class="fa-solid fa-right-from-bracket"></i> लॉगआउट
                             </button>
@@ -1008,7 +1122,6 @@
         </main>
 
         <!-- MODALS -->
-        <!-- (Modals code remains the same as before – not repeated for brevity) -->
         <div id="fullscreenImageModal" class="fixed inset-0 bg-black/95 flex flex-col items-center justify-center z-50 p-4 hidden">
             <div class="absolute top-4 right-4 z-50">
                 <button onclick="closeFullscreenImage()" class="bg-red-500/20 hover:bg-red-500 text-red-500 hover:text-white w-10 h-10 rounded-full flex items-center justify-center transition-all btn-animate">
@@ -1670,7 +1783,7 @@
     }
 
     // ============================================================
-    // MINING REWARD - Now requires staking
+    // MINING REWARD - Now requires staking + Voice Message
     // ============================================================
     function getLastClaimed() {
         return parseInt(localStorage.getItem('cx_last_claimed_' + (currentUser?.$id || '')) || '0', 10);
@@ -1712,10 +1825,15 @@
             setLastClaimed(now);
             updateDashboardStats();
 
-            if ('speechSynthesis' in window) {
-                const utterance = new SpeechSynthesisUtterance(`${reward.toFixed(2)} CX रिवॉर्ड मिला!`);
+            // 🎤 Voice Message - कांग्रेचुलेशन! आपका दिन शुभ हो।
+            try {
+                const utterance = new SpeechSynthesisUtterance("कांग्रेचुलेशन! आपका दिन शुभ हो।");
                 utterance.lang = 'hi-IN';
+                utterance.rate = 0.9;
+                utterance.pitch = 1.1;
                 window.speechSynthesis.speak(utterance);
+            } catch (voiceErr) {
+                console.log('Voice not supported');
             }
 
             showToast(`✅ ${reward.toFixed(2)} CX रिवॉर्ड रिलीज किया गया! (0.5% of ${stakedAmount.toFixed(2)} CX)`, 'success');
@@ -1927,7 +2045,7 @@
     }
 
     // ============================================================
-    // STAKING – WITH REFERRAL BONUS
+    // STAKING – WITH REFERRAL BONUS (User panel: no unlock button)
     // ============================================================
     function renderStakingDetails() {
         if (isAdminMode || !currentUser) return;
@@ -2075,6 +2193,7 @@
         }
     }
 
+    // ====== USER PANEL: NO UNLOCK BUTTON – Auto-unlock only ======
     function renderActiveStakes() {
         if (isAdminMode || !currentUser) return;
         const list = document.getElementById('activeStakesList');
@@ -2085,59 +2204,57 @@
             return;
         }
 
+        // Auto-unlock expired stakes (just show status, no button)
+        let updated = false;
+        const now = Date.now();
+        currentUser.staking.forEach(stake => {
+            if (stake.lockUntil <= now && stake.status === 'Locked') {
+                stake.status = 'Unlocked';
+                updated = true;
+                // Auto add to coins
+                const newCoins = parseFloat(currentUser.coins || 0) + parseFloat(stake.amount);
+                const newStaked = Math.max(0, parseFloat(currentUser.staked || 0) - parseFloat(stake.amount));
+                currentUser.coins = newCoins;
+                currentUser.staked = newStaked;
+                // Remove from staking list
+                const remaining = currentUser.staking.filter(s => s.stakeId !== stake.stakeId);
+                currentUser.staking = remaining;
+                // Save to database
+                saveUserFields({
+                    coins: newCoins,
+                    staked: newStaked,
+                    staking: JSON.stringify(remaining)
+                });
+                showToast(`✅ ${stake.amount} CX ऑटो-अनलॉक हो गया!`, 'success');
+            }
+        });
+
+        if (updated) {
+            // Re-render after auto-unlock
+            renderActiveStakes();
+            updateDashboardStats();
+            return;
+        }
+
         currentUser.staking.forEach(stake => {
             const now = Date.now();
             const diff = stake.lockUntil - now;
-            let isExpired = diff <= 0;
+            const daysRemaining = Math.ceil(diff / (1000 * 60 * 60 * 24));
 
             const stakeDiv = document.createElement('div');
             stakeDiv.className = 'bg-slate-950 p-2.5 rounded-lg border border-slate-800 flex items-center justify-between';
-
-            let actionBtn = '';
-            if (isExpired) {
-                actionBtn = `<button onclick="claimStakedPrincipal('${stake.stakeId}', this)" class="bg-green-500 text-slate-950 font-bold px-2 py-1 rounded text-[8px] btn-animate">अनलॉक करें</button>`;
-            } else {
-                const daysRemaining = Math.ceil(diff / (1000 * 60 * 60 * 24));
-                actionBtn = `<span class="text-amber-500 text-[10px]"><i class="fa-solid fa-lock mr-0.5"></i> ${daysRemaining} दिन शेष</span>`;
-            }
 
             stakeDiv.innerHTML = `
                 <div>
                     <div class="font-bold text-white text-xs">${Number(stake.amount).toFixed(2)} CX</div>
                     <div class="text-[9px] text-slate-400">प्रारंभ: ${stake.startDate} (${stake.days} दिन)</div>
                 </div>
-                <div class="text-right">${actionBtn}</div>
+                <div class="text-right">
+                    <span class="text-amber-500 text-[10px]"><i class="fa-solid fa-lock mr-0.5"></i> ${daysRemaining > 0 ? daysRemaining + ' दिन शेष' : 'अनलॉक हो रहा...'}</span>
+                </div>
             `;
             list.appendChild(stakeDiv);
         });
-    }
-
-    async function claimStakedPrincipal(stakeId, btn) {
-        if (isAdminMode || !currentUser) return;
-        setButtonLoading(btn, true);
-        try {
-            const stake = currentUser.staking.find(s => s.stakeId === stakeId);
-            if (!stake) { setButtonLoading(btn, false); return; }
-
-            const newCoins = parseFloat(currentUser.coins) + parseFloat(stake.amount);
-            const newStaked = Math.max(0, parseFloat(currentUser.staked) - parseFloat(stake.amount));
-            const remainingStakes = currentUser.staking.filter(s => s.stakeId !== stakeId);
-
-            await saveUserFields({
-                coins: newCoins,
-                staked: newStaked,
-                staking: JSON.stringify(remainingStakes)
-            });
-
-            renderStakingDetails();
-            updateDashboardStats();
-            showToast("✅ मूल राशि अनलॉक होकर बैलेंस में क्रेडिट हो गई!", 'success');
-        } catch (e) {
-            console.error(e);
-            showToast('अनलॉक करने में त्रुटि!', 'error');
-        } finally {
-            setButtonLoading(btn, false);
-        }
     }
 
     // ============================================================
@@ -2841,6 +2958,9 @@
         finally { setButtonLoading(btn, false); }
     }
 
+    // ============================================================
+    // ADMIN STAKING – with individual Unlock buttons
+    // ============================================================
     function renderAdminStakingConfig() {
         if (!isAdminMode) return;
         document.getElementById('adminStakingGloballyEnabled').checked = adminStakingSettings.globallyEnabled;
@@ -2849,18 +2969,87 @@
         adminStakingSettings.plans.forEach(plan => {
             plansConfig.innerHTML += `<label class="flex items-center justify-between bg-slate-950 p-2 rounded border border-slate-800"><span>${plan.days} दिन</span><input type="checkbox" ${plan.enabled ? 'checked' : ''} onchange="togglePlanState(${plan.days}, this.checked)" class="accent-amber-500 w-3.5 h-3.5"></label>`;
         });
+
+        // Admin staking list with individual unlock buttons
         const activeStakesArea = document.getElementById('adminStakingList');
         activeStakesArea.innerHTML = '';
         let anyStakeFound = false;
+
         users.forEach(u => {
             if (u.staking && u.staking.length > 0) {
                 u.staking.forEach(stake => {
                     anyStakeFound = true;
-                    activeStakesArea.innerHTML += `<div class="bg-slate-950 p-2.5 rounded-lg border border-slate-800 flex justify-between items-center"><div><div class="font-bold text-amber-400">${u.name} (${u.email})</div><div class="text-[9px] text-slate-400">प्रारंभ: ${stake.startDate || 'N/A'} (${stake.days} दिन)</div></div><div class="text-right text-[10px]"><div class="font-bold text-white">${Number(stake.amount).toFixed(2)} CX</div><div class="text-slate-500">Unlock: ${new Date(stake.lockUntil).toLocaleDateString('hi-IN')}</div></div></div>`;
+                    const now = Date.now();
+                    const isExpired = stake.lockUntil <= now;
+                    const div = document.createElement('div');
+                    div.className = 'bg-slate-950 p-2.5 rounded-lg border border-slate-800 flex justify-between items-center';
+                    div.innerHTML = `
+                        <div>
+                            <div class="font-bold text-amber-400">${u.name} (${u.email})</div>
+                            <div class="text-[9px] text-slate-400">प्रारंभ: ${stake.startDate || 'N/A'} (${stake.days} दिन)</div>
+                            <div class="text-[8px] text-slate-500">Amount: ${Number(stake.amount).toFixed(2)} CX</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-[10px] text-slate-500">Unlock: ${new Date(stake.lockUntil).toLocaleDateString('hi-IN')}</div>
+                            <button onclick="adminUnlockStake('${u.$id}', '${stake.stakeId}', this)" class="mt-1 bg-green-500 hover:bg-green-600 text-slate-950 font-bold px-3 py-1 rounded text-[9px] btn-animate">
+                                ${isExpired ? '🔓 Unlock (Expired)' : '🔓 Unlock'}
+                            </button>
+                        </div>
+                    `;
+                    activeStakesArea.appendChild(div);
                 });
             }
         });
-        if (!anyStakeFound) activeStakesArea.innerHTML = `<p class="text-slate-500 text-center py-2">कोई स्टैकिंग नहीं है।</p>`;
+
+        if (!anyStakeFound) {
+            activeStakesArea.innerHTML = `<p class="text-slate-500 text-center py-2">कोई स्टैकिंग नहीं है।</p>`;
+        }
+    }
+
+    // Admin function to unlock a single stake
+    async function adminUnlockStake(userDocId, stakeId, btn) {
+        if (!isAdminMode) return;
+        setButtonLoading(btn, true);
+        try {
+            const uIndex = users.findIndex(u => u.$id === userDocId);
+            if (uIndex === -1) { setButtonLoading(btn, false); showToast('यूजर नहीं मिला!', 'error'); return; }
+
+            const stakeIndex = users[uIndex].staking.findIndex(s => s.stakeId === stakeId);
+            if (stakeIndex === -1) { setButtonLoading(btn, false); showToast('स्टेकिंग नहीं मिली!', 'error'); return; }
+
+            const stake = users[uIndex].staking[stakeIndex];
+            const newCoins = parseFloat(users[uIndex].coins || 0) + parseFloat(stake.amount);
+            const newStaked = Math.max(0, parseFloat(users[uIndex].staked || 0) - parseFloat(stake.amount));
+            const remainingStakes = users[uIndex].staking.filter(s => s.stakeId !== stakeId);
+
+            // Update database
+            await databases.updateDocument(DATABASE_ID, USERS_COLLECTION_ID, userDocId, {
+                coins: newCoins,
+                staked: newStaked,
+                staking: JSON.stringify(remainingStakes)
+            });
+
+            // Update local users array and also currentUser if it's the same user
+            users[uIndex].coins = newCoins;
+            users[uIndex].staked = newStaked;
+            users[uIndex].staking = remainingStakes;
+
+            // If the unlocked user is the current admin's user (though admin may be different), update currentUser as well if needed
+            if (currentUser && currentUser.$id === userDocId) {
+                currentUser.coins = newCoins;
+                currentUser.staked = newStaked;
+                currentUser.staking = remainingStakes;
+                updateDashboardStats();
+            }
+
+            showToast(`✅ ${stake.amount} CX अनलॉक हो गया!`, 'success');
+            renderAdminStakingConfig(); // re-render list
+        } catch(e) {
+            console.error(e);
+            showToast('अनलॉक करने में त्रुटि!', 'error');
+        } finally {
+            setButtonLoading(btn, false);
+        }
     }
 
     async function toggleGlobalStakingState(enabled) {
@@ -2885,16 +3074,7 @@
         } catch(e) { plan.enabled = previous; renderAdminStakingConfig(); showToast('प्लान सेटिंग सेव करने में त्रुटि!', 'error'); }
     }
 
-    async function fastForwardStakes() {
-        if (!isAdminMode) return;
-        const usersToUpdate = users.filter(u => u.staking && u.staking.length > 0);
-        if (usersToUpdate.length === 0) { showToast("कोई सक्रिय स्टेकिंग नहीं मिली।", 'info'); return; }
-        try {
-            await Promise.all(usersToUpdate.map(u => { u.staking.forEach(stake => { stake.lockUntil = Date.now() - 1000; }); return databases.updateDocument(DATABASE_ID, USERS_COLLECTION_ID, u.docId, { staking: JSON.stringify(u.staking) }); }));
-            showToast("✅ सभी स्टैकिंग पीरियड्स समाप्त!", 'success');
-            if (currentAdminTab === 'staking') renderAdminStakingConfig();
-        } catch(e) { showToast('स्टेकिंग अपडेट में त्रुटि!', 'error'); }
-    }
+    // Removed fastForwardStakes as per user request
 
     function renderAdminReferrals() {
         if (!isAdminMode) return;
